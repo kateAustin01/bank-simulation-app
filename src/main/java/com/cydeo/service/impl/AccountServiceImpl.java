@@ -1,5 +1,6 @@
 package com.cydeo.service.impl;
 
+import com.cydeo.enums.AccountStatus;
 import com.cydeo.enums.AccountType;
 import com.cydeo.model.Account;
 import com.cydeo.repository.AccountRepository;
@@ -10,6 +11,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+
 @Component
 public class AccountServiceImpl implements AccountService {
 
@@ -21,9 +23,14 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Account createNewAccount(BigDecimal balance, Date creationDate, AccountType accountType, Long userID) {
-        Account account = Account.builder().id(UUID.randomUUID())
-                .userID(userID).accountType(accountType).balance(balance)
-                .creationDate(creationDate).build();
+        Account account = Account.builder()
+                .id(UUID.randomUUID())
+                .userID(userID)
+                .accountType(accountType)
+                .balance(balance)
+                .creationDate(creationDate)
+                .accountStatus(AccountStatus.ACTIVE)
+                .build();
         return accountRepository.save(account);
     }
 
