@@ -1,5 +1,7 @@
 package com.cydeo.controller;
 
+import com.cydeo.enums.AccountType;
+import com.cydeo.model.Account;
 import com.cydeo.service.AccountService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,15 @@ public class AccountController {
     public String getIndex(Model model) {
         model.addAttribute("accountList", accountService.listAllAccount());
         return "account/index";
+
+    }
+
+    @GetMapping("/create-form")
+    public String getCreateForm(Model model) {
+
+        model.addAttribute("account", Account.builder().build());
+        model.addAttribute("accountTypes", AccountType.values());
+        return "account/create-account";
 
     }
 
