@@ -39,7 +39,11 @@
 
           <tbody>
           <tr th:each="list:${accountList}" >
-            <td th:text="${list}" th:text="${list}"></td>
+            <td th:text="${list.getUserID()}"></td>
+            <td th:text="${list.getAccountStatus()}"></td>
+            <td th:text="${list.getBalance()}"></td>
+            <td th:text="${list.getAccountType()}"></td>
+            <td th:text="${list.getCreationDate()}"></td>
             <td><a class="btn btn-danger" href="#">Delete</a></td>
             <td><a class="btn btn-success" href="#">Account Transaction</a></td>
           </tr>

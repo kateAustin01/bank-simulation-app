@@ -1,5 +1,6 @@
 package com.cydeo;
 
+import com.cydeo.enums.AccountStatus;
 import com.cydeo.enums.AccountType;
 import com.cydeo.model.Account;
 import com.cydeo.service.AccountService;
@@ -19,15 +20,15 @@ public class BankSimulationAppApplication {
      ApplicationContext container = SpringApplication.run(BankSimulationAppApplication.class, args);
 
         //get account and transaction service beans
-     /*   AccountService accountService = container.getBean(AccountService.class);
+       AccountService accountService = container.getBean(AccountService.class);
         TransactionService transactionService = container.getBean(TransactionService.class);
 
         //create 2 account sender and receiver.
         Account sender = accountService.createNewAccount(BigDecimal.valueOf(70),new Date(),
-                                                                AccountType.CHECKING,1L);
+                                                                AccountType.CHECKING,1L, AccountStatus.ACTIVE);
 
         Account receiver = accountService.createNewAccount(BigDecimal.valueOf(50),new Date(),
-                AccountType.CHECKING,2L);
+                AccountType.CHECKING,2L,AccountStatus.ACTIVE);
         Account receiver2 = null;
 
 
@@ -37,7 +38,7 @@ public class BankSimulationAppApplication {
 
         System.out.println(transactionService.findAllTransaction().get(0));
 
-        accountService.listAllAccount().forEach(System.out::println);*/
+        accountService.listAllAccount().forEach(System.out::println);
 
 
     }
