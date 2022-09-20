@@ -25,14 +25,14 @@
 
                             <div class="form-group blu-margin">
                                 <label for="balance" class="col-form-label">Balance</label>
-                                <input th:field="*{balance}" type="text" class="form-control" id="balance" placeholder="balance">
+                                <input th:field="*{balance}"type="text" class="form-control" id="balance" placeholder="balance">
                             </div>
 
                             <div class="form-group blu-margin">
                                 <label for="dropOperator" class="col-form-label">Account Type</label>
-                                <select class="form-control"  id="dropOperator">
+                                <select class="form-control"  id="dropOperator" th:field="*{accountType}">
                                     <option value="0">Select Account </option>
-                                    <option></option>
+                                    <option th:each="account:${T(com.cydeo.enums.AccountType).values()}" th:text="${account}" th:value="${account}">Select Account </option>
                                 </select>
                             </div>
                         </div>
