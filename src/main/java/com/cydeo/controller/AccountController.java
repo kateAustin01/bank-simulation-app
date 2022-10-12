@@ -4,6 +4,7 @@ import com.cydeo.enums.AccountStatus;
 import com.cydeo.enums.AccountType;
 import com.cydeo.model.Account;
 import com.cydeo.service.AccountService;
+import com.cydeo.service.TransactionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +17,11 @@ import java.util.UUID;
 public class AccountController {
 
     private final AccountService accountService;
+    private final TransactionService transactionService;
 
-    public AccountController(AccountService accountService) {
+    public AccountController(AccountService accountService,TransactionService transactionService) {
         this.accountService = accountService;
+        this.transactionService = transactionService;
     }
 
 
@@ -53,11 +56,12 @@ public class AccountController {
     public String getDeleteAccount(@PathVariable("id") UUID id) {
 
 
-
-       accountService.deleteAccount(id);
+        accountService.deleteAccount(id);
 
         System.out.println(id);
         return "redirect:/index";
     }
+
+
 
 }
