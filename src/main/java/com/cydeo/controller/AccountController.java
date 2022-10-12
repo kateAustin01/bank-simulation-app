@@ -52,6 +52,8 @@ public class AccountController {
     @GetMapping  ("/delete/{id}")
     public String getDeleteAccount(@PathVariable("id") UUID id) {
 
+
+
        accountService.deleteAccount(id);
 
         System.out.println(id);
