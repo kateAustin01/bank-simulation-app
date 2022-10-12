@@ -76,7 +76,7 @@ public class TransactionServiceImpl implements TransactionService {
          */
 
         if((sender.getAccountType().equals(AccountType.SAVING)
-                ||receiver.getAccountType().equals(AccountType.SAVING))&& !sender.getUserID().equals(receiver.getUserID()))
+                ||receiver.getAccountType().equals(AccountType.SAVING))&& !sender.getUserId().equals(receiver.getUserId()))
         {
             throw new AccountOwnershipException("One of the accounts is Savings." +
                     " Transactions between savings and checking account are allowed between same user accounts only." +
