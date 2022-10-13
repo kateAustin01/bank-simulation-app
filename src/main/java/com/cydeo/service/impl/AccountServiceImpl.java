@@ -46,5 +46,10 @@ public class AccountServiceImpl implements AccountService {
 
     }
 
+    @Override
+    public Account retrieveById(UUID id) {
+        return accountRepository.findById(id);
+    }
+
 
 }

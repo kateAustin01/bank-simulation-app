@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Date;
+
 @Controller
 @RequestMapping
 public class TransactionController {
@@ -37,11 +39,14 @@ public class TransactionController {
     }
 
     @PostMapping("/transfer")
-    public String makeTransfer(@ModelAttribute("transactions") Transaction transaction){
+    public String postMakeTransfer(@ModelAttribute("transaction") Transaction transaction){
         //we need all accounts to provide them as sender,receiver
 
-        transactionService.makeTransfer(transaction.)
+        //I have UUID but I need to provide Account to make transfer method.
+        Account sender = accountService.retrieveById(transaction.getSender());
+        Account receiver = accountService.retrieveById(transaction.getReceiver());
+        transactionService.makeTransfer(sender,receiver,transaction.getAmount(),new Date(),transaction.getMessage());
 
-        return "transaction/make-transfer";
+        return "redirect:/make-transfer";
     }
 }
