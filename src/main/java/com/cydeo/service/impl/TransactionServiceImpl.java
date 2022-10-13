@@ -123,4 +123,9 @@ public class TransactionServiceImpl implements TransactionService {
 
 
     }
+
+    @Override
+    public List<Transaction> findTransactionListById(UUID id) {
+        return transactionRepository.findTransactionsById(id);
+    }
 }

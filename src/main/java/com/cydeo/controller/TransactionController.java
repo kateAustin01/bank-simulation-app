@@ -6,12 +6,10 @@ import com.cydeo.service.AccountService;
 import com.cydeo.service.TransactionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Controller
 @RequestMapping
@@ -49,4 +47,16 @@ public class TransactionController {
 
         return "redirect:/make-transfer";
     }
+
+    @GetMapping("/transactions/{id}")
+    public String getTransactionList(@PathVariable("id") UUID id,Model model){
+//write a method, that gets the id from index.html and print on the console.
+        //(work on index.html here)
+        model.addAttribute("transactions", transactionService.findTransactionListById(id));
+
+        return "transaction/transactions";
+    }
+
+
+
 }
